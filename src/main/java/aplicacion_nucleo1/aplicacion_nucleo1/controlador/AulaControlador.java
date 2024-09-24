@@ -27,7 +27,7 @@ public class AulaControlador {
     public String listAulas(Model model) {
         List<Aulas> aulas = aulasServicio.getAllAulas();
         model.addAttribute("aulas", aulas);
-        return "aulas/index"; // Página HTML para listar aulas
+        return "aula/index"; // Página HTML para listar aulas
     }
 
     // Mostrar el formulario para crear una nueva aula
