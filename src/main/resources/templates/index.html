@@ -1,70 +1,59 @@
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Escolar</title>
+    <title>Sistema Escolar - Alternativa</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Iconos de Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #212529; /* Fondo oscuro */
-            color: #e9ecef; /* Texto claro */
+            background-color: #f8f9fa; /* Fondo claro */
+            color: #212529; /* Texto oscuro */
             font-family: 'Arial', sans-serif;
         }
         .navbar {
-            background-color: #343a40; /* Navbar oscura */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: #007bff; /* Navbar azul */
         }
         .navbar-brand {
-            color: #e9ecef;
+            color: #ffffff;
         }
         .container {
-            margin-top: 70px;
+            margin-top: 50px;
         }
         .card {
-            border: none;
+            border: 1px solid #007bff; /* Borde azul */
             transition: transform 0.3s, box-shadow 0.3s;
-            background-color: #495057; /* Fondo de tarjeta oscuro */
         }
         .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
         }
         .card-body {
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px;
         }
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #e9ecef; /* Título claro */
+            color: #007bff; /* Título azul */
         }
         .card-text {
-            font-size: 0.95rem;
-            color: #ced4da; /* Texto de tarjeta más claro */
+            font-size: 1rem;
+            color: #6c757d; /* Texto de tarjeta gris */
         }
         .btn-primary {
-            background-color: #343a40; /* Botón oscuro */
+            background-color: #007bff; /* Botón azul */
             border: none;
             padding: 10px 20px;
         }
         .btn-primary:hover {
-            background-color: #495057; /* Botón oscuro al pasar el ratón */
+            background-color: #0056b3; /* Botón azul oscuro al pasar el ratón */
         }
         .row {
             justify-content: center;
-        }
-        .h2, .h4 {
-            font-weight: bold;
-            color: #e9ecef; /* Títulos claros */
-        }
-        .mb-4 {
-            margin-bottom: 2rem !important;
         }
     </style>
 </head>
@@ -78,7 +67,7 @@
     <h2 class="my-4 text-center">Bienvenido a UEBRITO</h2>
     <div class="row">
         <!-- Tarjeta de Aulas -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Aulas</h5>
@@ -89,7 +78,7 @@
         </div>
 
         <!-- Tarjeta de Cursos -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Cursos</h5>
@@ -100,7 +89,7 @@
         </div>
 
         <!-- Tarjeta de Estudiantes -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Estudiantes</h5>
@@ -111,7 +100,7 @@
         </div>
 
         <!-- Tarjeta de Matrícula -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Matrícula</h5>
@@ -122,7 +111,7 @@
         </div>
 
         <!-- Tarjeta de Profesores -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Profesores</h5>
@@ -131,11 +120,14 @@
                 </div>
             </div>
         </div>
+
     </div>
 </main>
+
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

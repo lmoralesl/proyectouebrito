@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Aulas</title>
+    <title>Formulario de Aulas</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -18,39 +18,30 @@
             background-color: #343a40; /* Cabecera de tarjeta oscura */
             color: #e9ecef; /* Texto de cabecera claro */
         }
-        .table {
-            color: #e9ecef; /* Texto claro en la tabla */
+        .form-control {
+            background-color: #6c757d; /* Fondo de campos de formulario oscuro */
+            color: #e9ecef; /* Texto de campos de formulario claro */
+            border: 1px solid #495057; /* Borde de campos de formulario */
         }
-        .table thead {
-            background-color: #343a40; /* Fondo oscuro para el encabezado de la tabla */
+        .form-control:focus {
+            border-color: #007bff; /* Color del borde al enfocar */
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Sombra del campo al enfocar */
         }
-        .table tbody tr:nth-child(odd) {
-            background-color: #495057; /* Fondo alternante para las filas de la tabla */
-        }
-        .table tbody tr:nth-child(even) {
-            background-color: #6c757d; /* Fondo alternante para las filas de la tabla */
-        }
-        .btn-success {
-            background-color: #28a745; /* Botón verde */
+        .btn-primary {
+            background-color: #343a40; /* Botón oscuro */
             border: none;
+            padding: 10px 20px;
         }
-        .btn-success:hover {
-            background-color: #218838; /* Botón verde oscuro al pasar el ratón */
+        .btn-primary:hover {
+            background-color: #495057; /* Botón oscuro al pasar el ratón */
         }
-        .btn-warning {
-            background-color: #ffc107; /* Botón amarillo */
+        .btn-secondary {
+            background-color: #6c757d; /* Botón secundario oscuro */
             border: none;
-            color: #212529; /* Texto oscuro en botón amarillo */
+            padding: 10px 20px;
         }
-        .btn-warning:hover {
-            background-color: #e0a800; /* Botón amarillo oscuro al pasar el ratón */
-        }
-        .btn-danger {
-            background-color: #dc3545; /* Botón rojo */
-            border: none;
-        }
-        .btn-danger:hover {
-            background-color: #c82333; /* Botón rojo oscuro al pasar el ratón */
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Botón secundario oscuro al pasar el ratón */
         }
     </style>
 </head>
@@ -58,34 +49,30 @@
 <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-header">
-            <h1 class="h3 mb-0">Aula</h1>
+            <h1 class="h4 mb-0" th:text="${aulas.id_aula != null} ? 'Editar Aula' : 'Nueva Aula'">Formulario Aula</h1>
         </div>
         <div class="card-body">
-            <a class="btn btn-success mb-3" th:href="@{/aulas/new}">Agregar Nueva Aula</a>
-            <a class="btn btn-secondary mb-3" th:href="@{/../}">Regresar</a>
-            <table class="table table-hover table-striped table-bordered text-center">
-                <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Capacidad</th>
-                    <th>Número</th>
-                    <th>Curso</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="aula, stat : ${aulas}">
-                    <td th:text="${stat.index + 1}"></td>
-                    <td th:text="${aula.capacidad}"></td>
-                    <td th:text="${aula.numero}"></td>
-                    <td th:text="${aula.cursos.nombre}"></td>
-                    <td>
-                        <a class="btn btn-sm btn-warning" th:href="@{/aulas/edit/{id}(id=${aula.id_aula})}">Editar</a>
-                        <a class="btn btn-sm btn-danger" th:href="@{/aulas/delete/{id}(id=${aula.id_aula})}">Eliminar</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <form th:action="@{/aulas}" th:object="${aulas}" method="post">
+                <input type="hidden" th:field="*{id_aula}" />
+                <div class="form-group">
+                    <label for="numero">Numero del Aula:</label>
+                    <input type="number" th:field="*{numero}" id="numero" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="capacidad">Capacidad del Aula:</label>
+                    <input type="number" th:field="*{capacidad}" id="capacidad" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="curso">Curso:</label>
+                    <select id="curso" class="form-control" th:field="*{cursos.id_curso}" required>
+                        <option th:each="curso : ${cursos}" th:value="${curso.id_curso}" th:text="${curso.nombre}">Curso</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/aulas" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
     </div>
 </div>
@@ -96,3 +83,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

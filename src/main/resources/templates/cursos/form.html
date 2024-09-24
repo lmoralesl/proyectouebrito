@@ -6,76 +6,98 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #212529; /* Fondo oscuro */
-            color: #e9ecef; /* Texto claro */
+            background-color: #f8f9fa; /* Fondo claro */
+            color: #212529; /* Texto oscuro */
             font-family: 'Arial', sans-serif;
         }
         .card {
             border: none;
-            background-color: #495057; /* Fondo de tarjeta oscuro */
+            border-radius: 0.5rem; /* Bordes redondeados */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
         }
         .card-header {
-            background-color: #343a40; /* Cabecera de tarjeta oscura */
-            color: #e9ecef; /* Texto de cabecera claro */
+            background-color: #007bff; /* Cabecera de tarjeta azul */
+            color: #ffffff; /* Texto de cabecera blanco */
         }
         .form-control {
-            background-color: #6c757d; /* Fondo de campos de formulario oscuro */
-            color: #e9ecef; /* Texto de campos de formulario claro */
-            border: 1px solid #495057; /* Borde de campos de formulario */
-        }
-        .form-control:focus {
-            border-color: #007bff; /* Color del borde al enfocar */
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Sombra del campo al enfocar */
+            border-radius: 0.25rem; /* Bordes redondeados para campos de formulario */
         }
         .btn-primary {
-            background-color: #343a40; /* Botón oscuro */
-            border: none;
-            padding: 10px 20px;
+            background-color: #007bff; /* Botón azul */
+            border-radius: 0.25rem; /* Bordes redondeados */
         }
         .btn-primary:hover {
-            background-color: #495057; /* Botón oscuro al pasar el ratón */
+            background-color: #0056b3; /* Botón azul oscuro al pasar el ratón */
         }
         .btn-secondary {
-            background-color: #6c757d; /* Botón secundario oscuro */
-            border: none;
-            padding: 10px 20px;
+            background-color: #6c757d; /* Botón secundario gris */
+            border-radius: 0.25rem; /* Bordes redondeados */
         }
         .btn-secondary:hover {
             background-color: #5a6268; /* Botón secundario oscuro al pasar el ratón */
+        }
+        label {
+            font-weight: bold; /* Etiquetas en negrita */
         }
     </style>
 </head>
 <body>
 <div class="container mt-5">
-    <div class="card shadow-sm">
-        <div class="card-header">
+    <div class="card">
+        <div class="card-header text-center">
             <h1 class="h4 mb-0" th:text="${cursos.id_curso != null} ? 'Editar Curso' : 'Nuevo Curso'">Formulario Curso</h1>
         </div>
         <div class="card-body">
             <form th:action="@{/cursos}" th:object="${cursos}" method="post">
                 <input type="hidden" th:field="*{id_curso}" />
+
                 <div class="form-group">
                     <label for="nombre">Nombre del Curso:</label>
-                    <input type="text" th:field="*{nombre}" id="nombre" class="form-control" required />
+                    <input type="text" th:field="*{nombre}" id="nombre" class="form-control" placeholder="Ingrese el nombre del curso" required aria-required="true" />
                 </div>
+
                 <div class="form-group">
-                    <label for="descripcion">Descripcion del Curso:</label>
-                    <input type="text" th:field="*{descripcion}" id="descripcion" class="form-control" required />
+                    <label for="descripcion">Descripción del Curso:</label>
+                    <textarea th:field="*{descripcion}" id="descripcion" class="form-control" placeholder="Ingrese una breve descripción del curso" required aria-required="true"></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="creditos">Creditos del Curso:</label>
-                    <input type="number" th:field="*{creditos}" id="creditos" class="form-control" required />
+                    <label for="creditos">Créditos del Curso:</label>
+                    <input type="number" th:field="*{creditos}" id="creditos" class="form-control" placeholder="Ingrese la cantidad de créditos" required aria-required="true" />
                 </div>
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <a href="/cursos" class="btn btn-secondary">Cancelar</a>
+
+                <!-- New Email Field -->
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <!-- New Password Field -->
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" required />
+                </div>
+
+                <!-- Checkbox -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+
+                <!-- Submit and Cancel Buttons -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="/cursos" class="btn btn-secondary">Cancelar</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
