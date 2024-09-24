@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Profesores</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #212529; /* Fondo oscuro */
+            color: #e9ecef; /* Texto claro */
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            border: none;
+            background-color: #495057; /* Fondo de tarjeta oscuro */
+        }
+        .card-header {
+            background-color: #343a40; /* Cabecera de tarjeta oscura */
+            color: #e9ecef; /* Texto de cabecera claro */
+        }
+        .table {
+            color: #e9ecef; /* Texto claro en la tabla */
+        }
+        .table thead {
+            background-color: #343a40; /* Fondo oscuro para el encabezado de la tabla */
+        }
+        .table tbody tr:nth-child(odd) {
+            background-color: #495057; /* Fondo alternante para las filas de la tabla */
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #6c757d; /* Fondo alternante para las filas de la tabla */
+        }
+        .btn-success {
+            background-color: #28a745; /* Botón verde */
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Botón verde oscuro al pasar el ratón */
+        }
+        .btn-warning {
+            background-color: #ffc107; /* Botón amarillo */
+            border: none;
+            color: #212529; /* Texto oscuro en botón amarillo */
+        }
+        .btn-warning:hover {
+            background-color: #e0a800; /* Botón amarillo oscuro al pasar el ratón */
+        }
+        .btn-danger {
+            background-color: #dc3545; /* Botón rojo */
+            border: none;
+        }
+        .btn-danger:hover {
+            background-color: #c82333; /* Botón rojo oscuro al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h1 class="h3 mb-0">Lista de Profesores</h1>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-success mb-3" th:href="@{/profesores/new}">Agregar Nuevo Profesor</a>
+            <a class="btn btn-secondary mb-3" th:href="@{/../}">Regresar</a>
+            <table class="table table-hover table-striped table-bordered text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Especialización</th>
+                    <th>Aula</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="profesor, stat : ${profesores}">
+                    <td th:text="${stat.index + 1}"></td>
+                    <td th:text="${profesor.nombre}"></td>
+                    <td th:text="${profesor.apellido}"></td>
+                    <td th:text="${profesor.email}"></td>
+                    <td th:text="${profesor.especializacion}"></td>
+                    <td th:text="${profesor.aulas.numero}"></td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" th:href="@{/profesores/edit/{id}(id=${profesor.id_profesor})}">Editar</a>
+                        <a class="btn btn-sm btn-danger" th:href="@{/profesores/delete/{id}(id=${profesor.id_profesor})}">Eliminar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos de Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #212529; /* Fondo oscuro */
+            color: #e9ecef; /* Texto claro */
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #343a40; /* Navbar oscura */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-brand {
+            color: #e9ecef;
+        }
+        .container {
+            margin-top: 70px;
+        }
+        .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #495057; /* Fondo de tarjeta oscuro */
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        .card-body {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e9ecef; /* Título claro */
+        }
+        .card-text {
+            font-size: 0.95rem;
+            color: #ced4da; /* Texto de tarjeta más claro */
+        }
+        .btn-primary {
+            background-color: #343a40; /* Botón oscuro */
+            border: none;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #495057; /* Botón oscuro al pasar el ratón */
+        }
+        .row {
+            justify-content: center;
+        }
+        .h2, .h4 {
+            font-weight: bold;
+            color: #e9ecef; /* Títulos claros */
+        }
+        .mb-4 {
+            margin-bottom: 2rem !important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"> UEBRITO</a>
+    </nav>
+</header>
+<main class="container">
+    <h2 class="my-4 text-center">Bienvenido a UEBRITO</h2>
+    <div class="row">
+        <!-- Tarjeta de Aulas -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Aulas</h5>
+                    <p class="card-text">Gestiona la información de las aulas disponibles en el sistema.</p>
+                    <a href="/aulas" class="btn btn-primary">Ver Aulas</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Cursos -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Cursos</h5>
+                    <p class="card-text">Administra los cursos y asignaturas ofrecidas.</p>
+                    <a href="/cursos" class="btn btn-primary">Ver Cursos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Estudiantes -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Estudiantes</h5>
+                    <p class="card-text">Consulta y gestiona la información de los estudiantes.</p>
+                    <a href="/estudiantes" class="btn btn-primary">Ver Estudiantes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Matrícula -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Matrícula</h5>
+                    <p class="card-text">Gestiona el proceso de matrícula de estudiantes.</p>
+                    <a href="/matriculas" class="btn btn-primary">Ver Matrícula</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Profesores -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Profesores</h5>
+                    <p class="card-text">Administra la información de los profesores del sistema.</p>
+                    <a href="/profesores" class="btn btn-primary">Ver Profesores</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
